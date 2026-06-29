@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c5tysynh5a234"]
+
+[ext_resource type="Script" uid="uid://bcs8abbdjmxge" path="res://scripts/game.gd" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://dgp57dtqu0ei5" path="res://scenes/score_ui.tscn" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://7f5ydrup8xxs" path="res://scenes/paddle.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://i0rsmdq1pfk8" path="res://scenes/ball.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cxgt6uoh48t8c" path="res://scenes/wall.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://clt5n0nry7ry" path="res://scenes/score_detector.tscn" id="5_iywne"]
+[ext_resource type="AudioStream" uid="uid://hile70teghsk" path="res://assets/score.ogg" id="7_u5sy4"]
+
+[node name="Game" type="Node2D" unique_id=665587268]
+script = ExtResource("1_uwrxv")
+
+[node name="Background" type="ColorRect" parent="." unique_id=694950478]
+z_index = -10
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1024640971]
+
+[node name="ScoreUI" parent="CanvasLayer" unique_id=1592253440 instance=ExtResource("2_p57ef")]
+
+[node name="PaddleOne" parent="." unique_id=283267428 instance=ExtResource("2_yqjtg")]
+position = Vector2(50, 360)
+
+[node name="PaddleTwo" parent="." unique_id=1326973646 instance=ExtResource("2_yqjtg")]
+position = Vector2(1230, 360)
+player_type = 1
+
+[node name="Ball" parent="." unique_id=1954940071 instance=ExtResource("3_lnu2h")]
+position = Vector2(640, 360)
+
+[node name="WallUp" parent="." unique_id=821836194 instance=ExtResource("4_lbhrr")]
+position = Vector2(640, -10)
+metadata/_edit_lock_ = true
+
+[node name="WallDown" parent="." unique_id=1475337130 instance=ExtResource("4_lbhrr")]
+position = Vector2(640, 730)
+metadata/_edit_lock_ = true
+
+[node name="ScoreDetectorLeft" parent="." unique_id=381005733 instance=ExtResource("5_iywne")]
+position = Vector2(-10, 360)
+
+[node name="ScoreDetectorRight" parent="." unique_id=1767855400 instance=ExtResource("5_iywne")]
+position = Vector2(1290, 360)
+is_right = true
+
+[node name="StartDelay" type="Timer" parent="." unique_id=1334975024]
+one_shot = true
+
+[node name="BallOutSound" type="AudioStreamPlayer2D" parent="." unique_id=1719063583]
+stream = ExtResource("7_u5sy4")
+volume_db = -10.0
+
+[connection signal="ball_out" from="ScoreDetectorLeft" to="." method="_on_score_detector_ball_out"]
+[connection signal="ball_out" from="ScoreDetectorRight" to="." method="_on_score_detector_ball_out"]

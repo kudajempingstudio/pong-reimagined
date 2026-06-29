@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dgp57dtqu0ei5"]
+
+[ext_resource type="Script" uid="uid://b66rge2bjnwlm" path="res://scripts/score_ui.gd" id="1_hoy1o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8tfrv"]
+font_size = 120
+
+[node name="ScoreUI" type="Control" unique_id=1592253440]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hoy1o")
+
+[node name="ScoreLeft" type="Label" parent="." unique_id=1869318551]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -134.5
+offset_right = -65.5
+offset_bottom = 165.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_8tfrv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreRight" type="Label" parent="." unique_id=193469728]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 65.5
+offset_right = 134.5
+offset_bottom = 165.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_8tfrv")
+horizontal_alignment = 1
+vertical_alignment = 1

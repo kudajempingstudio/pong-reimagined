@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://i0rsmdq1pfk8"]
+
+[ext_resource type="Script" uid="uid://cew7v34ytg38x" path="res://scripts/ball.gd" id="1_7s4qf"]
+[ext_resource type="AudioStream" uid="uid://c3h3uwjmbvvr2" path="res://assets/pop.ogg" id="2_cxlvu"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_sebr2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sebr2"]
+
+[node name="Ball" type="CharacterBody2D" unique_id=1954940071]
+script = ExtResource("1_7s4qf")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=170560606]
+scale = Vector2(20, 20)
+mesh = SubResource("QuadMesh_sebr2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=695291269]
+shape = SubResource("RectangleShape2D_sebr2")
+
+[node name="PopSound" type="AudioStreamPlayer2D" parent="." unique_id=1931274787]
+stream = ExtResource("2_cxlvu")
+volume_db = -10.0
